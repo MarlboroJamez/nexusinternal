@@ -1,0 +1,118 @@
+export const searchTestData = [
+    {
+        "_id": "634e998d9485b877b84cf0d8",
+        "uid": "6345400a96158521a4abe491",
+        "header": "test - persn listing",
+        "share": false,
+        "name": "James",
+        "surname": "Williams",
+        "pid": "",
+        "project": "test",
+        "title": "Person Listing",
+        "purpose": "Internal Use",
+        "cost": "2.50",
+        "remaining": "154746.5",
+        "search": [
+          {
+            "People": [
+              {
+                "InputIDNumber": "7707077777087",
+                "IDNumber": "7707077777087",
+                "ConsumerHashID": "ysJDV4QLhKK0EhJzyZ1N+w==",
+                "Passport": "",
+                "FirstName": "CHRISTOPHER",
+                "SecondName": "PHILLIP",
+                "ThirdName": "",
+                "Surname": "BURGER",
+                "MaidenName": "",
+                "DateOfBirth": "1977-07-07",
+                "Age": 45,
+                "AgeBand": "40 to 50",
+                "Title": "",
+                "IsMinor": false,
+                "InputIDPassedCDV": true,
+                "InputIDIsOldFormat": false,
+                "IDExists": true,
+                "Gender": "Male",
+                "MarriageDate": null,
+                "MaritalStatus": null,
+                "Score": 100,
+                "Country": "South Africa",
+                "Source": "DHA",
+                "OriginalSource": "DHA",
+                "LatestDate": "2022-10-18",
+                "UsingDHARealtime": false,
+                "Reference": "test1234",
+                "_Cached": false
+              }
+            ],
+            "TotalRecords": 1,
+            "TotalReturnedRecords": 1,
+            "status_message": "OK",
+            "bh_response_code": "000",
+            "http_code": "200",
+            "request_reference": "dc3375df-142a-428b-b5e0-5ea440d374e7"
+          }
+        ],
+        "creation": "2022-10-18T12:18:21.505Z",
+        "__v": 0
+      },
+      {
+          "_id": "634e998d9485b877bAS84cf0d8",
+          "uid": "6345400a96158521a4abe491",
+          "header": "test - persn listing",
+          "share": false,
+          "name": "James",
+          "surname": "Williams",
+          "pid": "",
+          "project": "test",
+          "title": "Person Listing",
+          "purpose": "Internal Use",
+          "cost": "2.50",
+          "remaining": "154746.5",
+          "search": [
+            {
+              "People": [
+                {
+                  "InputIDNumber": "7707077777087",
+                  "IDNumber": "7707077777087",
+                  "ConsumerHashID": "ysJDV4QLhKK0EhJzyZ1N+w==",
+                  "Passport": "",
+                  "FirstName": "CHRISTOPHER",
+                  "SecondName": "PHILLIP",
+                  "ThirdName": "",
+                  "Surname": "BURGER",
+                  "MaidenName": "",
+                  "DateOfBirth": "1977-07-07",
+                  "Age": 45,
+                  "AgeBand": "40 to 50",
+                  "Title": "",
+                  "IsMinor": false,
+                  "InputIDPassedCDV": true,
+                  "InputIDIsOldFormat": false,
+                  "IDExists": true,
+                  "Gender": "Male",
+                  "MarriageDate": null,
+                  "MaritalStatus": null,
+                  "Score": 100,
+                  "Country": "South Africa",
+                  "Source": "DHA",
+                  "OriginalSource": "DHA",
+                  "LatestDate": "2022-10-18",
+                  "UsingDHARealtime": false,
+                  "Reference": "test1234",
+                  "_Cached": false
+                }
+              ],
+              "TotalRecords": 1,
+              "TotalReturnedRecords": 1,
+              "status_message": "OK",
+              "bh_response_code": "000",
+              "http_code": "200",
+              "request_reference": "dc3375df-142a-428b-b5e0-5ea440d374e7"
+            }
+          ],
+          "creation": "2022-10-18T12:18:21.505Z",
+          "__v": 0
+        },
+]

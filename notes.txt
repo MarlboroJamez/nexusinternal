@@ -1,0 +1,51 @@
+________________________________________________________________________________________________
+Look at scheduled searches - done
+add backend to scheduled searches - 
+CIPC - done
+Business Interest Inquiry - done 
+Bank Account Verification - done
+Lifestyle Audit Report - done
+PEP - done
+IDV with - done
+IDV without - done
+licenes are being updated when searches are run, users licenses should be included in this -done
+________________________________________________________________________________________________
+
+Check package[]._id is not showing up
+
+___________________________________________________________________________________________
+Add team projects to searches:
+___________________________________________________________________________________________
+-CIPC: done
+-Lifestyle: done, to be tested
+-PEP: done, to be tested
+-BUSINESS INTEREST ENQUIRY: done, to be tested
+-BANK ACCOUNT VERIFICATION: done, to be tested
+-IDV WITH PHOTO: done, to be tested
+-IDV WITHOUT PHOTO: done, to be tested
+___________________________________________________________________________________________
+
+look at projects section
+
+
+Later
+Maybe add some graph views at the schedule manager section
+scheduled search emails
+
+
+ID’s:
+•	6910025205083 - 51061205840
+•	6405315007083
+
+Company Registration Numbers:
+•	2005/033941/07 (NEXUS TRAINING ACADEMY)
+•	2005/028312/07 (NEXUS FORENSIC SERVICES (PTY) LTD)
+
+
+Parameters (Term – this is your main search term) for doing a PEP search:
+•	Werner Bouwer
+•	Francois Labuschagne
+•	Nexus Forensic Services
+•	Nexus Trading Academy
+
+
