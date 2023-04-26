@@ -227,7 +227,7 @@ function Spiderweb({selectedProject, share, notified, project}) {
                     <tr>
                         <td className='p-2 border border-neutral-200'>Spiderweb</td>
                         <td className='p-2 border border-neutral-200'>Provides linked data between one to many ID numbers across all available datasets.</td>
-                        <td className='p-2 border border-neutral-200 text-right'>R17.55</td>
+                        <td className='p-2 border border-neutral-200 text-right'>R15.00</td>
                         <td className='p-2 border border-neutral-200 text-right'>600</td>
                         <td className='p-2 border border-neutral-200 text-right'>{license.length > 0 ? license[0].searches:""}</td>
                     </tr>

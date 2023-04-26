@@ -258,7 +258,7 @@ function CIPDirectorListing({selectedProject, share, notified, project}) {
             <tr>
                 <td className='p-2 border border-neutral-200'>Employee Checks & Detailed CIPC checks</td>
                 <td className='p-2 border border-neutral-200'>Bank Account Verification</td>
-                <td className='p-2 border border-neutral-200 text-right'>R4.88</td>
+                <td className='p-2 border border-neutral-200 text-right'>R4.00</td>
                 <td className='p-2 border border-neutral-200 text-right'>200</td>
                 <td className='p-2 border border-neutral-200 text-right'>{license.length > 0 ? license[0].searches:""}</td>
             </tr>

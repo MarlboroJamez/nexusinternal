@@ -227,7 +227,7 @@ function Personlisting({selectedProject, share, notified, project}) {
                     <tr>
                         <td className='p-2 border border-neutral-200'>Conflict of Interest Checks|Employee checks </td>
                         <td className='p-2 border border-neutral-200'>Directorship check separate (business interest inquiry - if input is only ID no)</td>
-                        <td className='p-2 border border-neutral-200 text-right'>R11.70</td>
+                        <td className='p-2 border border-neutral-200 text-right'>R10.00</td>
                         <td className='p-2 border border-neutral-200 text-right'>600</td>
                         <td className='p-2 border border-neutral-200 text-right'>{license.length > 0 ? license[0].searches:""}</td>
                     </tr>

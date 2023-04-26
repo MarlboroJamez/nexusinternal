@@ -3269,7 +3269,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
     Reference: Reference,
     PrimaryIDNumber: PrimaryIDNumber,
     SecondaryIDNumber: SecondaryIDNumber,
-    SearchCriteria: "",
+    SearchCriteria: "PRIMARY~SECONDID",
   }
 
   const config = {

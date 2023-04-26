@@ -30,6 +30,7 @@ import SearchesView from '../../tables/dashboard/searches';
 import BankAccountVerifications from '../../tables/provider/cpb/bankaccountverification';
 import ProcurementEnquiry from '../../tables/provider/cpb/procurementenquiry';
 import DynamicReport from '../../tables/provider/cpb/dynamicreport';
+import Spiderweb from '../../tables/provider/cpb/spiderweb';
 
 function IncomingSearches() {
   const {dispatch} = AppState();
@@ -224,6 +225,10 @@ console.log(paginated)
   
                 {selectedSearch.title === "Bank Account Verification" ? (
                   <BankAccountVerifications data={[selectedSearch]}/>
+                ):""}
+  
+                {selectedSearch.title === "Spiderwebrelationship Listing" ? (
+                  <Spiderweb data={[selectedSearch]}/>
                 ):""}
               </div>
           </div>

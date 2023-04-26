@@ -290,7 +290,7 @@ function Personlisting({selectedProject, share, notified, project}) {
                     <tr>
                         <td className='p-2 border border-neutral-200'>PEP, Sanctions and Adverse Media</td>
                         <td className='p-2 border border-neutral-200'>PEP, Sanctions and Adverse Media</td>
-                        <td className='p-2 border border-neutral-200 text-right'>R3.90</td>
+                        <td className='p-2 border border-neutral-200 text-right'>R3.00</td>
                         <td className='p-2 border border-neutral-200 text-right'>50</td>
                         <td className='p-2 border border-neutral-200 text-right'>{license.length > 0 ? license[0].searches:""}</td>
                     </tr>
