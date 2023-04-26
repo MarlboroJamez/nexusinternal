@@ -38,12 +38,6 @@ function Header({history}) {
                 alt="" 
                 className='cursor-pointer h-14'/>
             </Link>
-            <Link to="/dashboard">
-                <img 
-                src={TelkomLogo} 
-                alt="" 
-                className='ml-10 mr-10 cursor-pointer h-14 -mt-0.5'/>
-            </Link>
             {/* MENU */}
             <div className='ml-10'>
                 <ul className='flex mt-4 text-neutral-800'>
