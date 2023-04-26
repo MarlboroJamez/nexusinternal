@@ -4,10 +4,11 @@ import html2canvas from 'html2canvas';
 import axios from 'axios';
 
 // Assets
-import TelkomLogo from '../../../assets/images/telkomlogo.png';
 import NexusLogo from '../../../assets/images/logo.png';
-import CPBLogo from '../../../assets/images/cpbbanner.png';
 import LoadingGIF from '../../../assets/gifs/loading.gif'
+
+// Tables
+import SearchesView from '../../tables/invoice/searches';
 
 // Graphs
 import SearchTypes from '../../graphs/report/searchTypesBar';
@@ -17,7 +18,7 @@ import TotalSearchSpendings from '../../graphs/report/totalSpendings';
 // Hooks
 import useEncryptedCookie from '../../../hooks/cookies/useCookie';
 
-function ReportOverview() {
+function InvoiceOverview() {
     const [loading, setLoading] = useState(false);
     const [cookieValue, setCookieValue, getCookieValue] = useEncryptedCookie('ni-uid');
     const [cookieState, setCookieState] = useState(false);
@@ -115,7 +116,7 @@ function ReportOverview() {
         <div className='w-full h-110 grid place-items-center'>
             <div className='w-fit grid place-items-center'>
                 <img src={LoadingGIF} alt="" className='h-32'/>
-                <p className='text-neutral-600 text-lg mt-6'>Please be patient while we are generating your report...</p>
+                <p className='text-neutral-600 text-lg mt-6'>Please be patient while we are generating your invoice...</p>
             </div>
         </div>
     ):(
@@ -126,9 +127,14 @@ function ReportOverview() {
                         <h1 className="text-xl font-medium text-sky-700">
                             Report Overview
                         </h1>
+
+                        <div className="flex">
+
+                        </div>
+                        
                         <div>
                             <button onClick={handleExportPDF} className='transition duration-400 hover:bg-sky-500 hover:shadow-lg pl-10 pr-10 pt-2 pb-2 text-white bg-sky-600 rounded shadow-md'>
-                                Download Report
+                                Download Invoice
                             </button>
                         </div>
                     </div>
@@ -137,16 +143,14 @@ function ReportOverview() {
                         {/* REPORT HEADER */}
                         <div className='flex w-full justify-between mt-20'>
                             <div className='flex'>
-                                <img src={TelkomLogo} className="h-10 -mt-1 mr-3" alt=""/>
                                 <h1 className="text-2xl font-medium">
-                                    Telkom Forensics - Report Overview
+                                    Nexus Forensic Services - Invoices Overview
                                 </h1>
                             </div>
             
                             {/* NEXUS & CPB LOGO */}
                             <div className='flex'>
                                 <img src={NexusLogo} className="h-14 mr-8" alt=""/>
-                                <img src={CPBLogo} className="h-14" alt=""/>
                             </div>
                         </div>
             
@@ -156,7 +160,7 @@ function ReportOverview() {
                                 Summary
                             </h1>
                             <p className='mt-2 text-neutral-600 text-base'>
-                            This report, generated on <mark className='bg-transparent font-medium italic text-neutral-600'>{currentDate}</mark> via the Nexus Intelligence application, presents a comprehensive summary and overview of the searches, costs, and audit trails conducted across Telkom's team environment.
+                            This invoice, generated on <mark className='bg-transparent font-medium italic text-neutral-600'>{currentDate}</mark> via the Nexus Intelligence application, presents a comprehensive summary and overview of the searches, costs, and audit trails conducted across Nexus's team environment.
                             </p>
                         </div>
             
@@ -225,13 +229,46 @@ function ReportOverview() {
                                     <TotalSearchSpendings searches={transactions}/>
                                 </div>
                             </div>
-                    </div>
+                        </div>
+
+                        {/* FILTERING */}
+                        <div className="flex mb-6 -mt-60">
+                                <select 
+                                className="mr-10 rounded shadow-md bg-neutral-300 p-1 cursor-pointer hover:bg-neutral-200 outline-none">
+                                    <option value="All">All</option>
+                                    {searches.map((ser) => (
+                                        <option value={ser.header}>{ser.header}</option>
+                                    ))}
+                                </select>
+
+                            <select 
+                            className="mr-10 rounded shadow-md bg-neutral-300 p-1 cursor-pointer hover:bg-neutral-200 outline-none">
+                                <option value="">Filter by Month</option>
+                                <option value="January">January</option>
+                                <option value="February">February</option>
+                                <option value="March">March</option>
+                                <option value="April">April</option>
+                                <option value="May">May</option>
+                                <option value="June">June</option>
+                                <option value="July">July</option>
+                                <option value="August">August</option>
+                                <option value="September">September</option>
+                                <option value="October">October</option>
+                                <option value="November">November</option>
+                                <option value="December">December</option>
+                            </select>
+                        </div>
+
+                        {/* ALL SEARCHES VISUAL */}
+                        <div className=''>
+                            <SearchesView data={searches} loading={loading}/>
+                        </div>
                     </div>
                 </div>
         ):(
             <div className='w-full h-110 grid place-items-center'>
                 <div className='w-fit grid place-items-center p-6 rounded bg-white border border-neutral-300 h-fit w-fit shadow-lg'>
-                    <p className='text-neutral-600 text-lg'>A report could not be generated due to no searches being run yet...</p>
+                    <p className='text-neutral-600 text-lg'>A invoice could not be generated due to no searches being run yet...</p>
                 </div>
             </div>
         )}
@@ -241,4 +278,4 @@ function ReportOverview() {
   )
 }
 
-export default ReportOverview
+export default InvoiceOverview;

@@ -352,7 +352,7 @@ exports.lifestyleauditreport = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal, search.data)
       updateLicenseModelSearch(license, title, restrictCost)
       
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         subject: 'Lifestyle Audit Report',
@@ -873,7 +873,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal, search.data)
       updateLicenseModelSearch(license, title, restrictCost)
       
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         subject: 'CIPC Director Listing',
@@ -2198,7 +2198,7 @@ exports.pepslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal, search.data)
       updateLicenseModelSearch(license, title, restrictCost)
       
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -2305,7 +2305,7 @@ exports.businessinterestenquiry = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal, search.data)
       updateLicenseModelSearch(license, title, restrictCost)
       
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         subject: 'Business Interest Enquiry',
@@ -2398,7 +2398,7 @@ exports.idvwithphotovalidation = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal, search.data)
       updateLicenseModelSearch(license, title, restrictCost)
       
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         subject: 'IDV Listing including photo',
@@ -2500,7 +2500,7 @@ exports.idvwithoutphotovalidation = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal, search.data)
       updateLicenseModelSearch(license, title, restrictCost)
        
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -2702,7 +2702,7 @@ exports.idvwithoutphotovalidation = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal, search.data)
       updateLicenseModelSearch(license, title, restrictCost)
       
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -2804,7 +2804,7 @@ exports.idvwithoutphotovalidation = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -2896,7 +2896,7 @@ exports.idvwithoutphotovalidation = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost) 
       
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.Results[0].EncodedPDF,
@@ -3087,7 +3087,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal, search.data)
       updateLicenseModelSearch(license, title, restrictCost)
       
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         subject: 'CIPC Director Listing',
@@ -3190,7 +3190,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -3291,7 +3291,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -3395,7 +3395,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -3500,7 +3500,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -3615,7 +3615,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -3719,7 +3719,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -3826,7 +3826,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -3933,7 +3933,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -4036,7 +4036,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -4150,7 +4150,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,
@@ -4252,7 +4252,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
       updateLicenseModelSearch(license, title, restrictCost)
 
-      await axios.post('http://localhost:5000/api/v1/exchange/send',{
+      await axios.post('http://localhost:2000/api/v1/exchange/send',{
         email: userEmail,
         from: `${name} ${surname}`,
         encodedPDF: search.data.EncodedPDF,

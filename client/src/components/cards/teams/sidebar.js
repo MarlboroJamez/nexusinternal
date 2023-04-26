@@ -52,6 +52,13 @@ function Sidebar({view, setView}) {
                             Report Overview
                         </li>
                     ):""}
+                    {cookieValue && cookieValue.isTeamAdmin ? (
+                        <li  
+                        onClick={() => setView("invoice-overview")}
+                        className={view === "invoice-overview" ? "w-fit h-fit mb-1.5 cursor-pointer text-sky-700 font-medium transition duration-400":"w-fit h-fit mb-1.5 text-neutral-600 cursor-pointer hover:text-black transition duration-400"}>
+                            Invoice Overview
+                        </li>
+                    ):""}
                 </ul>
             </div>
             {/* <div className="mt-10">

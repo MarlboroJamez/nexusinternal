@@ -87,17 +87,17 @@ function NewSearch() {
       <div className="mt-12">
         {search === "Person Listing" && <PersonListing share={share} project={project} notified={notified}/>}
         {search === "CIPC Audit List" && <CIPCAuditList share={share} project={project} notified={notified}/>}
-        {search === "CIPC: Directors & Directors of other Interests   | R29.90" && <BusinessInterests selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
+        {search === "CIPC: Directors & Directors of other Interests" && <BusinessInterests selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
         {search === "CIPC Enterprise List" && <CIPCEnterpriseList share={share} project={project} notified={notified}/>}
-        {search === "Lifestyle Audits (directorship check included)   | R29.9" && <LifestyleAuditList selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
-        {search === "Dynamic Report (directorship check included)   | R29.9" && <DynamicReport selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
-        {search === "PEP List, Sanctions and Adverse media    | R3.90" && <PEPListing selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
-        {search === "Directorship: Business Interest Inquiry  | R11.70" && <BusinessInterestInquiry selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
-        {search === "Bank Account Verification    | R4.88" && <BankVerification selectedProject={selectedProject} share={share} project={project} notified={notified}/> }
+        {search === "Lifestyle Audits" && <LifestyleAuditList selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
+        {search === "Dynamic Report" && <DynamicReport selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
+        {search === "PEP List, Sanctions and Adverse media" && <PEPListing selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
+        {search === "Business Interest Inquiry" && <BusinessInterestInquiry selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
+        {search === "Bank Account Verification" && <BankVerification selectedProject={selectedProject} share={share} project={project} notified={notified}/> }
         {search === "Home Affairs Verification" && <IDVValidation selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
         
         {/* TOKEN */}
-        {search === "Spiderweb Listing    | R17.55" && <Spiderweb selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
+        {search === "Spiderweb Listing" && <Spiderweb selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
         {search === "Enterprise Risk Report" && <EnterpriseRiskReport selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
         {search === "Credit Enquiry" && <CreditEnquiry selectedProject={selectedProject} share={share} project={project} notified={notified}/>}
         {search === "Individual KYC" && <IndividualKYC selectedProject={selectedProject} share={share} project={project} notified={notified}/>}

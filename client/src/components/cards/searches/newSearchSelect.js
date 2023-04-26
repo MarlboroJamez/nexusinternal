@@ -12,24 +12,23 @@ function NewSearchSelect({selectedProject, setSelectedProject, setSelected, boq,
   const [projects, setProjects] = useState([])
   const [loading, setLoading] = useState(false)
   const typesSelect = [
-    "CIPC: Directors & Directors of other Interests   | R29.90",
-    "Bank Account Verification    | R4.88",
+    "CIPC: Directors & Directors of other Interests",
+    "Bank Account Verification",
     "Home Affairs Verification",
-    "Lifestyle Audits (directorship check included)   | R29.9",
-    "Dynamic Report (directorship check included)   | R29.9",
-    "Directorship: Business Interest Inquiry  | R11.70",
-    "PEP List, Sanctions and Adverse media    | R3.90",
-    "Spiderweb Listing    | R17.55",
-    "Enterprise Risk Report",
-    "Credit Enquiry",
-    "Individual KYC",
-    "Trace Enquiry",
-    "Trust Enquiry",
-    "Deeds Enquiry",
-    "IDV Enquiry",
-    "Company KYC",
-    "Eagle Eye"
-
+    "Lifestyle Audits",
+    "Dynamic Report",
+    "Business Interest Inquiry",
+    "PEP List, Sanctions and Adverse media",
+    "Spiderweb Listing",
+    // "Enterprise Risk Report",
+    // "Credit Enquiry",
+    // "Individual KYC",
+    // "Trace Enquiry",
+    // "Trust Enquiry",
+    // "Deeds Enquiry",
+    // "IDV Enquiry",
+    // "Company KYC",
+    // "Eagle Eye"
   ];
 
   const config = {

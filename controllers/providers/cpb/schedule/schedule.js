@@ -492,7 +492,7 @@ exports.schedulelifestyleauditreport = async (req, res, next) => {
                 updateLicenseModelSearch(license, title, restrictCost)
                 
                       
-                await axios.post('http://localhost:5000/api/v1/exchange/send',{
+                await axios.post('http://localhost:2000/api/v1/exchange/send',{
                     email: userEmail,
                     from: `${name} ${surname}`,
                     subject: 'Lifestyle Audit Report',
@@ -1164,7 +1164,7 @@ exports.schedulecipcdirectorslist = async (req, res, next) => {
                 updateLicenseModelSearch(license, title, restrictCost)
                 
                       
-                await axios.post('http://localhost:5000/api/v1/exchange/send',{
+                await axios.post('http://localhost:2000/api/v1/exchange/send',{
                     email: userEmail,
                     from: `${name} ${surname}`,
                     subject: 'CIPC Director Listing',
@@ -2824,7 +2824,7 @@ exports.schedulepepslist= async (req, res, next) => {
                 updateLicenseModelSearch(license, title, restrictCost)
                 
                       
-                await axios.post('http://localhost:5000/api/v1/exchange/send',{
+                await axios.post('http://localhost:2000/api/v1/exchange/send',{
                     email: userEmail,
                     from: `${name} ${surname}`,
                     subject: 'PEP Listing',
@@ -2943,7 +2943,7 @@ exports.schedulebusinessinterestenquiry= async (req, res, next) => {
                 //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)
                 updateLicenseModelSearch(license, title, restrictCost)
                      
-                await axios.post('http://localhost:5000/api/v1/exchange/send',{
+                await axios.post('http://localhost:2000/api/v1/exchange/send',{
                     email: userEmail,
                     from: `${name} ${surname}`,
                     subject: 'Business Interest Enquiry',
@@ -3074,7 +3074,7 @@ exports.schedulebankaccountverification= async (req, res, next) => {
                 updateLicenseModelSearch(license, title, restrictCost)
                 
                       
-                await axios.post('http://localhost:5000/api/v1/exchange/send',{
+                await axios.post('http://localhost:2000/api/v1/exchange/send',{
                     email: userEmail,
                     from: `${name} ${surname}`,
                     subject: 'Bank Account Verification',
@@ -3183,7 +3183,7 @@ exports.scheduleidvwithphotovalidation= async (req, res, next) => {
                 updateLicenseModelSearch(license, title, restrictCost)
                 
                       
-                await axios.post('http://localhost:5000/api/v1/exchange/send',{
+                await axios.post('http://localhost:2000/api/v1/exchange/send',{
                     email: userEmail,
                     from: `${name} ${surname}`,
                     subject: 'IDV Listing including photo',
@@ -3297,7 +3297,7 @@ exports.scheduleidvwithoutphotovalidation= async (req, res, next) => {
                 updateLicenseModelSearch(license, title, restrictCost)
                 
                        
-                await axios.post('http://localhost:5000/api/v1/exchange/send',{
+                await axios.post('http://localhost:2000/api/v1/exchange/send',{
                     email: userEmail,
                     from: `${name} ${surname}`,
                     subject: 'IDV Listing without photo',

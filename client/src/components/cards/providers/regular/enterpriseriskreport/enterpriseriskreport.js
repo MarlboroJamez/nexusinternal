@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import io from 'socket.io-client';
 import axios from 'axios'
+import { Document, Page } from 'react-pdf';
 
 // Assets
-import Guide from '../../../../../assets/guides/spiderweb.pdf'
+import Guide from '../../../../../assets/guides/commercial.pdf'
 
 // Context
 import { AppState } from '../../../../../context/Context';
@@ -15,43 +16,35 @@ import useEncryptedCookie  from '../../../../../hooks/cookies/useCookie';
 import PermissiblePurpose from '../../../../../data/cpb/purpose.json';
 
 // Models
-import HelperModel from '../../../../cards/providers/helpers/models/helperbusinessinterestenquiry';
 import SuccessModel from '../../../../models/global/success';
 import ErrorModel from '../../../../models/global/error';
-import RunningModel from '../../../../models/searches/slowsearch';
+import ActionModel from '../../../../models/global/actions';
+import HelperModel from '../../../../cards/providers/helpers/models/cipcdirectorlisting';
 
-function Spiderweb({selectedProject, share, notified, project}) {
+function CIPDirectorListing({selectedProject, share, notified, project}) { 
     const {dispatch} = AppState();
-     
     const [cookieValue, setCookieValue, getCookieValue] = useEncryptedCookie('ni-uid');
     const [cookieState, setCookieState] = useState(false);
-    const [socketConnected, setSocketConnected] = useState(false)
-    const [useDHAExtra, setUseDHAExtra] = useState("");
-    const [useSAFPDirect, setUseSAFPDirect] = useState("");
+    const [remaining, setRemaining] = useState("");
 
+    const [helperModel, setHelperModel] = useState(false);
+    const [successModel, setSuccessModel] = useState(false)
+    const [error, setError] = useState(false);
+    const [errorModel, setErrorModel] = useState(false)
+    const [runningSearch, setRunningSearch] = useState(false);
+
+    const [registrationNumber, setRegistrationNumber] = useState("");
     const [permissablePurpose, setPermissablePurpose] = useState("");
     const [reference, setReference] = useState("");
-    const [idNumber, setIdNumber] = useState("");
-    const [surname, setSurname] = useState("");
-    const [firstName, setFirstName] = useState("");
-    const [secondName, setSecondName] = useState("");
-    const [dob, setDob] = useState("");
-    const [usePP, setUsePP] = useState(false);
     const [header, setHeader] = useState("");
-    const [date, setDate] = useState("");
-    const [helperModel, setHelperModel] = useState("");
-    const [remaining, setRemaining] = useState("");
-    const [rawHTML, setRawHTML] = useState("");
+    const [idNumber, setIdNumber] = useState("");
     const [loading, setLoading] = useState(false);
-    const [successModel, setSuccessModel] = useState(false)
-    const [error, setError]= useState(false)
     const [errorMessage, setErrorMessage] = useState("")
-    const [errorModel, setErrorModel] = useState(false);
     const [license, setLicense] = useState([]);
-    const [runningModel, setRunningModel] = useState(false);
 
     const [view, setView] = useState("search")
     const [access, setAccess] = useState([]);
+
 
     const config = {
         headers: {
@@ -66,92 +59,86 @@ function Spiderweb({selectedProject, share, notified, project}) {
     },[])
 
     useEffect(() => {
+        if(cookieValue){
+            if(cookieValue.license){
+                setRemaining(cookieValue.license[0].restrictions.filter(item => item.type === "Commercial Enquiry"))
+            }
+        }
+    },[cookieState, cookieValue])
+
+    useEffect(() => {
         const licenseInfo = async () => {
             if(cookieValue){
                 if(cookieValue.license){
                     const {data} = await axios.post('/api/v1/client/searches/license', {
                         id:cookieValue.license[0]._id
                     }, config)
-                    setLicense(data.data[0].restrictions.filter((res) => res.type === "Spiderwebrelationship Listing"))
-                    setAccess(cookieValue.license[0].restrictions.filter(item => item.type === "Business Interest Enquiry"))
+                    setLicense(data.data[0].restrictions.filter((res) => res.type === "Commercial Enquiry"))
+                    setAccess(cookieValue.license[0].restrictions.filter(item => item.type === "Commercial Enquiry"))
                 }
             }
         }
         licenseInfo()
     },[cookieState, cookieValue, loading])
 
-     
     const handleSubmission = async (e) => {
         e.preventDefault();
-        const lic = cookieValue.license[0].restrictions.filter((res) => res.type === "Business Interest Enquiry")
+        const lic = cookieValue.license[0].restrictions.filter((res) => res.type === "Commercial Enquiry")
         const cost = lic[0].cost
         const currentTotal = cookieValue.license[0].totalIncome;
         
         try {
                 if(reference.length === 0){
-                        setError(true)
+                    setError(true)
                 } else {
                     if(license[0].searches > 0){
                         setLoading(true)
-                    setRunningModel(true)
-                    const {data} = await axios.post('/api/v1/provider/cpb/search/spiderweb', {
-                        uid: cookieValue._id.toString(),
-                        PermissiblePurpose: "Fraud Detection and Prevention",
+                    const {data} = await axios.post('/api/v1/provider/cpb/search/companyenquiryreportcipc', {
+                        uid: cookieValue._id,
                         license: cookieValue.license[0],
+                        header: `${reference}`,
                         userEmail: cookieValue.email.toString(),
-                        header: reference,
-                        PrimaryIDNumber: idNumber,
-                        EnquiryReason: permissablePurpose, //input removed
-                        EnquiryDoneBy: `${cookieValue.name} ${cookieValue.surname}`, // input removed
-                        SecondaryIDNumber: useDHAExtra,
-                        UseSAFPSDirect: useSAFPDirect,
-                        RawHTML: rawHTML,
-                        SecondName: secondName,
-                        DOB: dob,
-                        UsePP: usePP,
-                        Reference: reference,
-                        name: cookieValue.name,
-                        surname: cookieValue.surname,
-                        pid: cookieValue.license[0]._id,
-                        share: true,
-                        restrictionName: "Spiderwebrelationship Listing",
+                        restrictionName: "Commercial Enquiry",
                         restrictCost: cost.toString(),
                         currentTotal: currentTotal - cost.toString(),
+                        notifyMe: notified,
+                        pid: cookieValue.license[0]._id,
+                        share: share,
+                        name: cookieValue.name,
+                        surname: cookieValue.surname,
+                        PermissiblePurpose: "Fraud Detection and Prevention",
+                        IDNumber: idNumber,
+                        RegistrationNumber: registrationNumber,
+                        Reference: reference,
+                        EnquiryDoneBy: `${cookieValue.name} ${cookieValue.surname}`
                     }, config)
-                    setHeader("");
-                    setIdNumber("");
-                    setSurname("")
-                    setFirstName("")
-                    setPermissablePurpose("")
-                    setReference("")
-                    setRunningModel(false)
-                    setLoading(false)
-                    setSuccessModel(true)
                     dispatch({
                         type: 'INSERT_SEARCH_NOTIFICATION',
                         payload: []
                     })
+                    setIdNumber("");
+                    setReference("");
+                    setRegistrationNumber("");
+                    setHeader("");
+                    setLoading(false)
+                    setSuccessModel(true)
                     } else {
                         setErrorModel(true)
                         setErrorMessage("You have reached your monthly limit, please engage with us to enable more units if needed.")
                     }
                 }
         } catch (e) {
-            setRunningModel(false)
             setLoading(false)
             setErrorModel(true)
             setErrorMessage(e.response.data.message.status_message)
         }
+
     }
 
     const handleRestrictAccess = () => {
         setErrorModel(true)
         setErrorMessage("Your access has been restricted by your admin, please contact him to enable this feature.")
     }
-
-    
-     
-
 
   return (
     <div>
@@ -162,7 +149,7 @@ function Spiderweb({selectedProject, share, notified, project}) {
                 className={view === "search" ? 
                 "mr-10 transition duration-400 bg-sky-500 h-fit rounded text-white shadow p-2 w-fit font-medium"
                 :"mr-10 transition duration-400 hover:bg-sky-500 h-fit rounded bg-sky-600 text-white shadow p-2 w-fit font-medium"}>
-                    Enterprise Risk Report
+                   Enterprise Risk Report
                 </li>
                 <li
                 onClick={() => setView("about")}
@@ -187,9 +174,6 @@ function Spiderweb({selectedProject, share, notified, project}) {
 
         {view === "search" && (
             <div>
-            {runningModel ? (
-                <RunningModel setModal={setRunningModel}/>
-            ):""}
             {successModel ? (
                 <SuccessModel message={"Your search has been successful, you can view your new search at incoming searches."} setModal={setSuccessModel}/>
             ):""}
@@ -198,12 +182,18 @@ function Spiderweb({selectedProject, share, notified, project}) {
                 <ErrorModel message={errorMessage} setModal={setErrorModel}/>
             ):""}
     
+            {runningSearch ? (
+                <ActionModel message={"Your search is running..."}/>
+            ):""}
+    
             {helperModel ? (
                 <HelperModel setModel={setHelperModel}/>
             ):""}
-           <div 
+            
+            <div 
             className="w-fit flex">
-                <h1 className="font-medium text-3xl">
+                <h1 
+                className="font-medium text-3xl">
                     Enterprise Risk Report
                 </h1>
                 {/* <svg 
@@ -225,25 +215,26 @@ function Spiderweb({selectedProject, share, notified, project}) {
                 </thead>
                 <tbody className='text-sm'>
                     <tr>
-                        <td className='p-2 border border-neutral-200'>Spiderweb</td>
-                        <td className='p-2 border border-neutral-200'>Provides linked data between one to many ID numbers across all available datasets.</td>
-                        <td className='p-2 border border-neutral-200 text-right'>R17.55</td>
-                        <td className='p-2 border border-neutral-200 text-right'>600</td>
+                        <td className='p-2 border border-neutral-200'>Detailed CIPC Checks</td>
+                        <td className='p-2 border border-neutral-200'>Enterprise Risk Report</td>
+                        <td className='p-2 border border-neutral-200 text-right'>R29.90</td>
+                        <td className='p-2 border border-neutral-200 text-right'>700</td>
                         <td className='p-2 border border-neutral-200 text-right'>{license.length > 0 ? license[0].searches:""}</td>
                     </tr>
                 </tbody>
             </table>
     
-            <div className="flex mt-6">
+    
+            <div className="flex mt-12 w-full">
                 <div className="grid h-fit">
                     {/* <div className='grid mb-6 '>
-                        <label className='mt-1 text-xs w-full text-right font-bold mb-0.5'>E.g. Individual - Business Interest Inquiry</label>
+                        <label className='mt-1 text-xs w-full text-right font-bold mb-0.5'>E.g. Detailed CIPC - Commercial</label>
                         <input 
                         value={header}
                         onChange={(e) => setHeader(e.target.value)}
                         placeHolder="Provide your search a title"
                         className={header.length <=0 ? "h-fit text-sm rounded border border-red-400 bg-white shadow p-2 w-80":"h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80"}/>
-                        {error&header.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs'>Input a title to your search</label>}
+                        {error&header.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs text-neutral-700'>Input a title to your search</label>}
                     </div> */}
     
                     {/* PERSONAL REFERENCE NUMBER */}
@@ -251,29 +242,17 @@ function Spiderweb({selectedProject, share, notified, project}) {
                         <label className='mt-1 text-xs w-full text-right font-bold mb-0.5'>E.g. TEL001</label>
                         <input 
                         value={reference}
-                        maxlength="30"
                         onChange={(e) => setReference(e.target.value)}
                         placeHolder="Telkom/Case Reference Number"
                         className={reference.length <=0 ? "h-fit text-sm rounded border border-red-400 bg-white shadow p-2 w-80":"h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80"}/>
                         {error&reference.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs'>Add a reference or case number to your search</label>}
                     </div>
     
-                    <div className='mb-6 grid'>
-                        <label className='mt-1 text-xs w-full text-right font-bold mb-0.5'>E.g. 9712162384098</label>
-                        {/* ID NUMBER */}
-                        <input 
-                        value={idNumber}
-                        onChange={(e) => setIdNumber(e.target.value)}
-                        placeHolder="Primary ID Number"
-                        className={idNumber.length <=0 ? "h-fit text-sm rounded border border-red-400 bg-white shadow p-2 w-80":"h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80"}/>
-                        {error&idNumber.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs w-80'>South African ID number</label>}
-                    </div>
-    
                     {/* PERMISSIBLE PURPOSE */}
                     <div className='mb-6 grid'>
                         <select 
                         onChange={(e) => setPermissablePurpose(e.target.value)}
-                        className="cursor-pointer h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80">
+                        className="h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80">
                         {PermissiblePurpose.purpose.map((pur) => (
                             <option value={pur}>{pur}</option>
                         ))}
@@ -281,22 +260,23 @@ function Spiderweb({selectedProject, share, notified, project}) {
                         <label className='mt-1 text-xs'>Permissible purpose for this enquiry</label>
                     </div>
                 </div>
-                <div className="grid ml-10 h-fit">
-                    <div className='mb-6 grid'>
-                        <label className='mt-1 text-xs w-full text-right font-bold mb-0.5'>E.g. 9712162384098</label>
-                        {/* ID NUMBER */}
-                        <input 
-                        value={useDHAExtra}
-                        onChange={(e) => setUseDHAExtra(e.target.value)}
-                        placeHolder="Secondary ID Number"
-                        className={useDHAExtra.length <=0 ? "h-fit text-sm rounded border border-red-400 bg-white shadow p-2 w-80":"h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80"}/>
-                        {error&useDHAExtra.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs w-80'>South African ID number</label>}
-                    </div>
-                        <button 
-                        onClick={loading ? "":handleSubmission}
-                        className="transition duration-400 hover:bg-sky-400 h-fit mb-4 rounded bg-sky-500 text-white shadow p-2 w-80 font-medium">
-                            {loading ? "Running...":"Search"}
-                        </button>
+                <div className="grid ml-12 h-fit">
+    
+                <div className='mb-6 grid'>
+                    <label className='mt-1 text-xs w-full text-right font-bold mb-0.5'>E.g. 2005/033941/07</label>
+                    {/* COMPANY REGISTRATION NUMBER */}
+                    <input 
+                    value={registrationNumber}
+                    onChange={(e) => setRegistrationNumber(e.target.value)}
+                    placeHolder="Company Registration Number"
+                    className="h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80"/>
+                    {error&registrationNumber.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs w-80'>Provide a valid company registration number</label>}
+                </div>
+                    <button 
+                    onClick={loading ? "":handleSubmission}
+                    className="transition duration-400 hover:bg-sky-400 h-fit mb-4 rounded bg-sky-500 text-white shadow p-2 w-80 font-medium">
+                        {loading ? "Running...":"Search"}
+                    </button>
                 </div>
             </div>
         </div>
@@ -305,4 +285,4 @@ function Spiderweb({selectedProject, share, notified, project}) {
   )
 }
 
-export default Spiderweb
+export default CIPDirectorListing

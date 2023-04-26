@@ -225,7 +225,7 @@ function Spiderweb({selectedProject, share, notified, project}) {
                 </thead>
                 <tbody className='text-sm'>
                     <tr>
-                        <td className='p-2 border border-neutral-200'>Spiderweb</td>
+                        <td className='p-2 border border-neutral-200'>Individual KYC</td>
                         <td className='p-2 border border-neutral-200'>Provides linked data between one to many ID numbers across all available datasets.</td>
                         <td className='p-2 border border-neutral-200 text-right'>R17.55</td>
                         <td className='p-2 border border-neutral-200 text-right'>600</td>
@@ -259,12 +259,45 @@ function Spiderweb({selectedProject, share, notified, project}) {
                     </div>
     
                     <div className='mb-6 grid'>
+                        <label className='mt-1 text-xs w-full text-right font-bold mb-0.5'>E.g. TEL001</label>
+                        <input 
+                        value={reference}
+                        maxlength="30"
+                        onChange={(e) => setReference(e.target.value)}
+                        placeHolder="ID Number"
+                        className={reference.length <=0 ? "h-fit text-sm rounded border border-red-400 bg-white shadow p-2 w-80":"h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80"}/>
+                        {error&reference.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs'>Add a reference or case number to your search</label>}
+                    </div>
+                    
+                    <div className='mb-6 grid'>
+                        <label className='mt-1 text-xs w-full text-right font-bold mb-0.5'>E.g. TEL001</label>
+                        <input 
+                        value={reference}
+                        maxlength="30"
+                        onChange={(e) => setReference(e.target.value)}
+                        placeHolder="Input Person"
+                        className={reference.length <=0 ? "h-fit text-sm rounded border border-red-400 bg-white shadow p-2 w-80":"h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80"}/>
+                        {error&reference.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs'>Add a reference or case number to your search</label>}
+                    </div>
+
+                    <div className='mb-6 grid'>
                         <label className='mt-1 text-xs w-full text-right font-bold mb-0.5'>E.g. 9712162384098</label>
                         {/* ID NUMBER */}
                         <input 
                         value={idNumber}
                         onChange={(e) => setIdNumber(e.target.value)}
-                        placeHolder="Primary ID Number"
+                        placeHolder="Input Address"
+                        className={idNumber.length <=0 ? "h-fit text-sm rounded border border-red-400 bg-white shadow p-2 w-80":"h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80"}/>
+                        {error&idNumber.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs w-80'>South African ID number</label>}
+                    </div>
+
+                    <div className='mb-6 grid'>
+                        <label className='mt-1 text-xs w-full text-right font-bold mb-0.5'>E.g. 9712162384098</label>
+                        {/* ID NUMBER */}
+                        <input 
+                        value={idNumber}
+                        onChange={(e) => setIdNumber(e.target.value)}
+                        placeHolder="Input Telephone"
                         className={idNumber.length <=0 ? "h-fit text-sm rounded border border-red-400 bg-white shadow p-2 w-80":"h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80"}/>
                         {error&idNumber.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs w-80'>South African ID number</label>}
                     </div>
@@ -288,7 +321,18 @@ function Spiderweb({selectedProject, share, notified, project}) {
                         <input 
                         value={useDHAExtra}
                         onChange={(e) => setUseDHAExtra(e.target.value)}
-                        placeHolder="Secondary ID Number"
+                        placeHolder="Input Email"
+                        className={useDHAExtra.length <=0 ? "h-fit text-sm rounded border border-red-400 bg-white shadow p-2 w-80":"h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80"}/>
+                        {error&useDHAExtra.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs w-80'>South African ID number</label>}
+                    </div>
+
+                    <div className='mb-6 grid'>
+                        <label className='mt-1 text-xs w-full text-right font-bold mb-0.5'>E.g. 9712162384098</label>
+                        {/* ID NUMBER */}
+                        <input 
+                        value={useDHAExtra}
+                        onChange={(e) => setUseDHAExtra(e.target.value)}
+                        placeHolder="Input Employer"
                         className={useDHAExtra.length <=0 ? "h-fit text-sm rounded border border-red-400 bg-white shadow p-2 w-80":"h-fit text-sm rounded border border-neutral-200 bg-white shadow p-2 w-80"}/>
                         {error&useDHAExtra.length <= 0 ? <label className='mt-1 text-red-400 text-xs'>This is a required field</label>:<label className='mt-1 text-xs w-80'>South African ID number</label>}
                     </div>

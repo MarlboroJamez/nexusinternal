@@ -19,7 +19,7 @@ exports.sendexchangeemail = async (req, res, next) => {
   // You can prompt the user to sign in interactively or use a cached token
   const loginResult = await pca.acquireTokenByUsernamePassword({
     username: "nexusintel@nexfor.co.za",
-    password: "NexIn@6405",
+    password: "Ent3n$chm@lz715",
     scopes: ["https://graph.microsoft.com/.default"],
   });
 

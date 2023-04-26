@@ -12,6 +12,7 @@ import TeamMessenger from '../../../components/views/teams/teamMessenger';
 import MemberManagement from '../../../components/views/teams/memberManagement';
 import ExchangeManagement from '../../../components/views/teams/exchangemanagement';
 import ReportOverview from '../../../components/views/teams/reportOverview';
+import InvoiceOverview from '../../../components/views/teams/invoiceOverview';
 
 function Team() {
   const [view, setView] = useState("team-overview");
@@ -31,6 +32,7 @@ function Team() {
             {view === "member-management" && <MemberManagement/>}
             {view === "exchange-management" && <ExchangeManagement/>}
             {view === "report-overview" && <ReportOverview/>}
+            {view === "invoice-overview" && <InvoiceOverview/>}
           </div>
         </div>
     </div>
