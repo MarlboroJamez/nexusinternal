@@ -3285,7 +3285,7 @@ exports.cipcdirectorslist = async (req, res, next) => {
       config
     );
 
-    if(pid && search.status === 200){
+    if(search.status === 200){
       // Creating the search model
       createSearchModel(pid, project, title, uid, name, header, share, surname, restrictCost, currentTotal, PermissiblePurpose, search.data)
       //updateProjectModelSearch(restrictCost, uid, name, surname, header, pid, project, title, PermissiblePurpose, share, currentTotal)

@@ -73,17 +73,16 @@ function Spiderweb({selectedProject, share, notified, project}) {
                         id:cookieValue.license[0]._id
                     }, config)
                     setLicense(data.data[0].restrictions.filter((res) => res.type === "Spiderwebrelationship Listing"))
-                    setAccess(cookieValue.license[0].restrictions.filter(item => item.type === "Business Interest Enquiry"))
+                    setAccess(cookieValue.license[0].restrictions.filter(item => item.type === "Spiderwebrelationship Listing"))
                 }
             }
         }
         licenseInfo()
     },[cookieState, cookieValue, loading])
-
      
     const handleSubmission = async (e) => {
         e.preventDefault();
-        const lic = cookieValue.license[0].restrictions.filter((res) => res.type === "Business Interest Enquiry")
+        const lic = cookieValue.license[0].restrictions.filter((res) => res.type === "Spiderwebrelationship Listing")
         const cost = lic[0].cost
         const currentTotal = cookieValue.license[0].totalIncome;
         
